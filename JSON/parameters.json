@@ -26,9 +26,6 @@
     
         "adminUsername": {
             "value": "AzureUser"
-        },
-        "location":{
-            "value": "EastUS2"
         }
 
 
