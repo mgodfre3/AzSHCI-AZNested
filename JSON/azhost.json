@@ -282,8 +282,8 @@
     },
     "variables": {
         "dataDisksCount": 8,
-        "dscUri": "https://github.com/mgodfre3/AzSHCI-AZNested/blob/main/DSC/ashcihost.zip",
-        "artifactsLocation": "https://github.com/mgodfre3/AzSHCI-AZNested/blob/main/",
+        "dscUri": "https://github.com/mgodfre3/AzSHCI-AZNested/blob/main/DSC/ashcihost.zip?raw=true",
+        "artifactsLocation": "https://raw.githubusercontent.com/mgodfre3/AzSHCI-AZNested",
         "randomGUID": "[substring(uniqueString(subscription().subscriptionId, resourceGroup().id, parameters('virtualMachineName')),0,6)]",
         "dnsNameForPublicIP": "[toLower(concat(parameters('virtualMachineName'), variables('randomGUID')))]",
         "environment": "Workgroup",
@@ -323,7 +323,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                "uri": "[uri(variables('artifactsLocation'), concat('JSON/vnet.json'))]", 
+                "uri": "[uri(variables('artifactsLocation'), concat('AzSHCI-AZNested/main/JSON/updatevnet.json'))]", 
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -527,7 +527,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[uri(variables('artifactsLocation'), concat('JSON/updatevnet.json'))]",
+                    "uri": "[uri(variables('artifactsLocation'), concat('AzSHCI-AZNested/main/JSON/updatevnet.json'))]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {

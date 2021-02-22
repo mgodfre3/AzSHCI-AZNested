@@ -26,6 +26,9 @@
     
         "adminUsername": {
             "value": "AzureUser"
+        },
+        "DNSServerAddress": {
+            "value":"1.1.1.1"
         }
     }
 }
