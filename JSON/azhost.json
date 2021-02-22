@@ -469,7 +469,7 @@
                     "name": "ConfigureAsHciHost",
                     "apiVersion": "2020-06-01",
                     "location": "[resourceGroup().location]",
-                    "dependsOn": [],
+                    "dependsOn": ["[parameters('virtualMachineName')]"],
                     "properties": {
                         "publisher": "Microsoft.Powershell",
                         "type": "DSC",
@@ -483,9 +483,7 @@
                                 "function": "ASHCIHost"
                             },
                             "configurationArguments": {
-                                "DomainName": "[parameters('domainName')]",
                                 "environment": "[variables('environment')]",
-                                "enableDHCP": "[parameters('enableDHCP')]",
                                 "customRdpPort": "[parameters('customRdpPort')]"
                             }
                         },
