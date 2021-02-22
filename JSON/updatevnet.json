@@ -26,12 +26,6 @@
                 "description": "The address range of the subnet created in the new VNET"
             }
         },
-        "DNSServerAddress": {
-            "type": "array",
-            "metadata": {
-                "description": "The DNS address(es) of the DNS Server(s) used by the VNET"
-            }
-        },
         "location": {
             "type": "string",
             "metadata": {
