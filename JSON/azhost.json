@@ -75,13 +75,6 @@
                 "description": "Select your VM generation, ideally Gen 2. Not all Azure regions support Gen 2 VMs."
             }
         },
-        "domainName": {
-            "type": "string",
-            "defaultValue": "ashci.local",
-            "metadata": {
-                "description": "The FQDN that will be used in the environment"
-            }
-        },
         "dataDiskType": {
             "type": "string",
             "defaultValue": "StandardSSD_LRS",
@@ -114,17 +107,6 @@
         },
         "adminPassword": {
             "type": "securestring"
-        },
-        "enableDHCP": {
-            "type": "string",
-            "defaultValue": "Enabled",
-            "allowedValues": [
-                "Enabled",
-                "Disabled"
-            ],
-            "metadata": {
-                "description": "Choose whether you wish to enable DHCP in the environment for AKS-HCI testing. If you choose Disabled, it can be enabled after deployment."
-            }
         },
         "customRdpPort": {
             "type": "string",
@@ -300,8 +282,8 @@
     },
     "variables": {
         "dataDisksCount": 8,
-        "dscUri": "https://github.com/Azure/aks-hci/raw/main/eval/dsc/akshcihost.zip",
-        "artifactsLocation": "https://raw.githubusercontent.com/Azure/aks-hci/main/eval/",
+        "dscUri": "https://github.com/mgodfre3/AzSHCI-AZNested/blob/main/DSC/ashcihost.zip",
+        "artifactsLocation": "https://github.com/mgodfre3/AzSHCI-AZNested",
         "randomGUID": "[substring(uniqueString(subscription().subscriptionId, resourceGroup().id, parameters('virtualMachineName')),0,6)]",
         "dnsNameForPublicIP": "[toLower(concat(parameters('virtualMachineName'), variables('randomGUID')))]",
         "environment": "Workgroup",
