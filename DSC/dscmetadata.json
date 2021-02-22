@@ -1,0 +1,10 @@
+{
+    "Modules": [
+        "StorageDSC",
+        "ComputerManagementDsc",
+        "xPSDesiredStateConfiguration",
+        "xHyper-v",
+        "DSCR_Shortcut",
+        "xCredSSP"
+    ]
+}
