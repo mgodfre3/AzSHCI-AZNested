@@ -283,7 +283,7 @@
     "variables": {
         "dataDisksCount": 8,
         "dscUri": "https://github.com/mgodfre3/AzSHCI-AZNested/blob/main/DSC/ashcihost.zip",
-        "artifactsLocation": "https://github.com/mgodfre3/AzSHCI-AZNested",
+        "artifactsLocation": "https://github.com/mgodfre3/AzSHCI-AZNested/blob/main/",
         "randomGUID": "[substring(uniqueString(subscription().subscriptionId, resourceGroup().id, parameters('virtualMachineName')),0,6)]",
         "dnsNameForPublicIP": "[toLower(concat(parameters('virtualMachineName'), variables('randomGUID')))]",
         "environment": "Workgroup",
@@ -323,7 +323,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[uri(variables('artifactsLocation'), concat('json/vnet.json'))]",
+                "uri": "[uri(variables('artifactsLocation'), concat('JSON/vnet.json'))]", 
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -527,7 +527,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[uri(variables('artifactsLocation'), concat('json/updatevnet.json'))]",
+                    "uri": "[uri(variables('artifactsLocation'), concat('JSON/updatevnet.json'))]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
