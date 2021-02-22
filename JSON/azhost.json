@@ -66,7 +66,7 @@
         },
         "virtualMachineGeneration": {
             "type": "string",
-            "defaultValue": "Generation 2",
+            "defaultValue": "Generation 1",
             "allowedValues": [
                 "Generation 1",
                 "Generation 2"
@@ -268,7 +268,6 @@
                 "Yakutsk Standard Time"
             ]
         },
-
         "alreadyHaveAWindowsServerLicense": {
             "type": "string",
             "defaultValue": "No",
@@ -283,8 +282,8 @@
     },
     "variables": {
         "dataDisksCount": 8,
-        "dscUri": "https://github.com/mgodfre3/AzSHCI-AZNested/blob/main/DSC/ashcihost.zip",
-        "artifactsLocation": "https://github.com/mgodfre3/AzSHCI-AZNested/blob/main/",
+        "dscUri": "https://github.com/mgodfre3/AzSHCI-AZNested/blob/main/DSC/ashcihost.zip?raw=true",
+        "artifactsLocation": "https://raw.githubusercontent.com/mgodfre3/AzSHCI-AZNested",
         "randomGUID": "[substring(uniqueString(subscription().subscriptionId, resourceGroup().id, parameters('virtualMachineName')),0,6)]",
         "dnsNameForPublicIP": "[toLower(concat(parameters('virtualMachineName'), variables('randomGUID')))]",
         "environment": "Workgroup",
@@ -305,7 +304,7 @@
         {
             "name": "[variables('publicIpAddressName')]",
             "type": "Microsoft.Network/publicIpAddresses",
-            "apiVersion": "2020-07-01",
+            "apiVersion": "2018-10-01",
             "location": "[resourceGroup().location]",
             "sku": {
                 "name": "[variables('publicIpAddressSku')]"
@@ -324,7 +323,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                "uri": "[uri(variables('artifactsLocation'), concat('JSON/vnet.json'))]", 
+                "uri": "[uri(variables('artifactsLocation'), concat('AzSHCI-AZNested/main/JSON/updatevnet.json'))]", 
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
@@ -403,7 +402,7 @@
         {
             "name": "[parameters('virtualMachineName')]",
             "type": "Microsoft.Compute/virtualMachines",
-            "apiVersion": "2020-06-01",
+            "apiVersion": "2019-07-01",
             "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkInterfaces/', variables('networkInterfaceName'))]"
@@ -528,7 +527,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "[uri(variables('artifactsLocation'), concat('JSON/updatevnet.json'))]",
+                    "uri": "[uri(variables('artifactsLocation'), concat('AzSHCI-AZNested/main/JSON/updatevnet.json'))]",
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
