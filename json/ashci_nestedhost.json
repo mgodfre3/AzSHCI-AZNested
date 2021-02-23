@@ -64,8 +64,16 @@
         },
         "patchMode": {
             "type": "string"
+        },
+        "AutomationAccountName": {
+            "type": "string",
+            "metadata": {
+                "description": "description"
+            },
+            "defaultvalue":"ASHCIAutomation"
         }
     },
+    
     "variables": {
         "nsgId": "[resourceId(resourceGroup().name, 'Microsoft.Network/networkSecurityGroups', parameters('networkSecurityGroupName'))]",
         "vnetId": "[resourceId(resourceGroup().name,'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
@@ -216,6 +224,19 @@
                     "bootDiagnostics": {
                         "enabled": true
                     }
+                }
+            }
+        },
+        {
+            "name": "[parameters('AutomationAccountName')]",
+            "type": "Microsoft.Automation/automationAccounts",
+            "apiVersion": "2015-10-31",
+            "location": "[resourceGroup().location]",
+            "tags": {
+            },
+            "properties": {
+                "sku": {
+                    "name": "Free"
                 }
             }
         }
