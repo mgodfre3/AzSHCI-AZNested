@@ -372,6 +372,7 @@
                 "count": "[length(parameters('dataDiskResources'))]"
             }
         },
+        //VMConfiguration
         {
             "name": "[parameters('virtualMachineName')]",
             "type": "Microsoft.Compute/virtualMachines",
@@ -474,11 +475,10 @@
                             }
                         }
                     }
-            }
-                ]
-        },
-        
-        {
+                    //End VM Configuration
+            },
+            //Automation Account Creation
+            {
             "name": "[parameters('AutomationAccountName')]",
             "type": "Microsoft.Automation/automationAccounts",
             "apiVersion": "2015-10-31",
@@ -490,9 +490,10 @@
                     "name": "Free"
                 }
             }
-        }
+            //End Automation Account Creation
         },
-        {
+        //Shutdown Automation
+{
             "name": "[concat('shutdown-computevm-', parameters('virtualMachineName'))]",
             "type": "Microsoft.DevTestLab/schedules",
             "apiVersion": "2018-09-15",
@@ -510,11 +511,17 @@
                 "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
             ]
         }
-    ],
+        //End Shutdown Automation
+    ]
+            },
     "outputs": {
         "adminUsername": {
             "type": "string",
             "value": "[parameters('adminUsername')]"
-        }
+            }
+    
     }
+    
+}
+    ]
 }
