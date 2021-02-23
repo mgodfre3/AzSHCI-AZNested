@@ -12,10 +12,9 @@ configuration AKSHCIHost
 
 
     
-    Import-DscResource -ModuleName 'ComputerManagementDsc' -ModuleVersion 8.4.0
+    
     Import-DscResource -ModuleName 'xHyper-v' -ModuleVersion 3.16.0.0
     Import-DscResource -ModuleName 'StorageDSC' -ModuleVersion 5.0.1
-    Import-DscResource -ModuleName 'DSCR_Shortcut' -ModuleVersion 2.1.1
     Import-DscResource -ModuleName 'xCredSSP' -ModuleVersion 1.3.0.0
 
 
@@ -193,12 +192,6 @@ if ($environment -eq "Workgroup") {
         ValueType = "String"
         DependsOn = "[Registry]NewCredSSPKey2"
     }
-}
-
-ScheduledTask "Disable Server Manager at Startup" {
-    TaskName = 'ServerManager'
-    Enable   = $false
-    TaskPath = '\Microsoft\Windows\Server Manager'
 }
 
 #### STAGE 1d - CUSTOM FIREWALL BASED ON ARM TEMPLATE ####
