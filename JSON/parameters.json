@@ -13,7 +13,7 @@
         },
 
         "virtualMachineGeneration": {
-            "value": "Generation 2"
+            "value": "Generation 1"
         },
     
         "dataDiskType": {

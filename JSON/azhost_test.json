@@ -321,35 +321,7 @@
                 }
             }
         },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "[variables('virtualNetworkName')]",
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                "uri": "[uri(variables('artifactsLocation'), concat('main/JSON/updatevnet.json'))]", 
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "virtualNetworkName": {
-                        "value": "[variables('virtualNetworkName')]"
-                    },
-                    "virtualNetworkAddressRange": {
-                        "value": "[variables('addressPrefix')]"
-                    },
-                    "subnetName": {
-                        "value": "[variables('subnetName')]"
-                    },
-                    "subnetRange": {
-                        "value": "[variables('subnetPrefix')]"
-                    },
-                    "location": {
-                        "value": "[resourceGroup().location]"
-                    }
-                }
-            }
-        },
+        
         {
             "name": "[variables('networkInterfaceName')]",
             "type": "Microsoft.Network/networkInterfaces",
@@ -463,48 +435,14 @@
                 },
                 "diagnosticsProfile": {
                     "bootDiagnostics": {
-                        "enabled": true
+                        "enabled": false
                     }
                 },
                 "licenseType": "[if(equals(parameters('alreadyHaveAWindowsServerLicense'), 'Yes'), 'Windows_Server', 'None')]"
             },
             "resources": [
-                {
-                    "type": "extensions",
-                    "name": "ConfigureAsHciHost",
-                    "apiVersion": "2020-06-01",
-                    "location": "[resourceGroup().location]",
-                    "dependsOn": ["[parameters('virtualMachineName')]"],
-                    "properties": {
-                        "publisher": "Microsoft.Powershell",
-                        "type": "DSC",
-                        "typeHandlerVersion": "2.77",
-                        "autoUpgradeMinorVersion": true,
-                        "settings": {
-                            "wmfVersion": "latest",
-                            "configuration": {
-                                "url": "[variables('dscUri')]",
-                                "script": "ashcihost.ps1",
-                                "function": "ASHCIHost"
-                            },
-                            "configurationArguments": {
-                                "environment": "[variables('environment')]",
-                                "customRdpPort": "[parameters('customRdpPort')]"
-                            }
-                        },
-                        "protectedSettings": {
-                            "configurationArguments": {
-                                "adminCreds": {
-                                    "UserName": "[parameters('adminUsername')]",
-                                    "Password": "[parameters('adminPassword')]"
-                                }
-                            }
-                        }
-                    }
-                }
-            ]
-        },
-        {
+                
+            {
             "name": "[concat('shutdown-computevm-', parameters('virtualMachineName'))]",
             "type": "Microsoft.DevTestLab/schedules",
             "apiVersion": "2018-09-15",
@@ -522,38 +460,7 @@
                 "[concat('Microsoft.Compute/virtualMachines/', parameters('virtualMachineName'))]"
             ]
         },
-        {
-            "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2020-06-01",
-            "name": "[concat(variables('virtualNetworkName'),'-UpdateDNS')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Compute/virtualMachines/extensions', parameters('virtualMachineName'), 'ConfigureAsHciHost')]"
-            ],
-            "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "uri": "[uri(variables('artifactsLocation'), concat('main/JSON/updatevnet.json'))]",
-                    "contentVersion": "1.0.0.0"
-                },
-                "parameters": {
-                    "virtualNetworkName": {
-                        "value": "[variables('virtualNetworkName')]"
-                    },
-                    "virtualNetworkAddressRange": {
-                        "value": "[variables('addressPrefix')]"
-                    },
-                    "subnetName": {
-                        "value": "[variables('subnetName')]"
-                    },
-                    "subnetRange": {
-                        "value": "[variables('subnetPrefix')]"
-                    },
-                    "location": {
-                        "value": "[resourceGroup().location]"
-                    }
-                }
-            }
-        },
+        
     {
         "name": "ASHCILabvNet",
         "type": "Microsoft.Network/virtualNetworks",
@@ -562,7 +469,6 @@
         "tags": {
             "displayName": "hci-nested-vnet"
         },
-        "dependsOn": [],
         "properties": {
             "addressSpace": {
                 "addressPrefixes": [
@@ -579,19 +485,11 @@
             ]
         }
     }
-    ],
-    "outputs": {
-        "adminUsername": {
-            "type": "string",
-            "value": "[parameters('adminUsername')]"
-        },
-        "rdpPort": {
-            "type": "string",
-            "value": "[parameters('customRdpPort')]"
-        },
-        "fqdn": {
-            "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPAddressName'))).dnsSettings.fqdn]",
-            "type": "string"
-        }
-    }
+    ]
+    
+    
+    
+}
+    ]
+
 }

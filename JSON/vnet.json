@@ -32,17 +32,24 @@
                 "description": "Location for all resources."
             }
         }
+        
     },
     "resources": [
         {
             "type": "Microsoft.Network/virtualNetworks",
             "name": "[parameters('virtualNetworkName')]",
-            "apiVersion": "2020-07-01",
+            "apiVersion": "2019-11-01",
             "location": "[parameters('location')]",
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": [
                         "[parameters('virtualNetworkAddressRange')]"
+                    ]
+                },
+                "dhcpOptions": {
+                    "dnsServers": [
+                        "1.1.1.1.1",
+                        "8.8.8.8"
                     ]
                 },
                 "subnets": [
@@ -52,6 +59,7 @@
                             "addressPrefix": "[parameters('subnetRange')]"
                         }
                     }
+                    
                 ]
             }
         }
