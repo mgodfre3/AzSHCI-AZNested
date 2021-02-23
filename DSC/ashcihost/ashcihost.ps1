@@ -1,4 +1,4 @@
-configuration AKSHCIHost
+configuration ASHCIHost001
 {
     param 
     ( 
