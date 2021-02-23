@@ -11,12 +11,12 @@ configuration AKSHCIHost
     ) 
 
 
-    Import-DscResource -ModuleName 'PSDesiredStateConfiguration'
-    Import-DscResource -ModuleName 'ComputerManagementDsc'
-    Import-DscResource -ModuleName 'xHyper-v'
-    Import-DscResource -ModuleName 'StorageDSC'
-    Import-DscResource -ModuleName 'DSCR_Shortcut'
-    Import-DscResource -ModuleName 'xCredSSP'
+    
+    Import-DscResource -ModuleName 'ComputerManagementDsc' -ModuleVersion 8.4.0
+    Import-DscResource -ModuleName 'xHyper-v' -ModuleVersion 3.16.0.0
+    Import-DscResource -ModuleName 'StorageDSC' -ModuleVersion 5.0.1
+    Import-DscResource -ModuleName 'DSCR_Shortcut' -ModuleVersion 2.1.1
+    Import-DscResource -ModuleName 'xCredSSP' -ModuleVersion 1.3.0.0
 
 
 
