@@ -108,7 +108,7 @@
                 "Standard_E64-32ds_v4"
             ]
         },
-"autoShutdownStatus": {
+    "autoShutdownStatus": {
             "type": "string",
             "defaultValue": "Enabled",
             "allowedValues": [
@@ -282,7 +282,9 @@
             "metadata": {
                 "description": "If you wish to use a different port to RDP into the VM (between 0 and 65535), change it here, otherwise, leave the default."
             }
+    }
     },
+
     
     "variables": {
         "dscUri": "https://github.com/mgodfre3/AzSHCI-AZNested/blob/main/DSC/ashcihost.zip?raw=true",
@@ -515,5 +517,4 @@
             "value": "[parameters('adminUsername')]"
         }
     }
-}
 }
