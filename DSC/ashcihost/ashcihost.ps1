@@ -1,4 +1,4 @@
-Configuration ASHCIHost001 {
+Configuration ASHCIHost {
 
     Import-DscResource -ModuleName 'PSDesiredStateConfiguration'
     
