@@ -1,6 +1,8 @@
 Configuration ASHCIHost {
 
     param(
+    [Parameter(Mandatory)]
+    [System.Management.Automation.PSCredential]$Admincreds,
     [String]$targetDrive = "V",
     [Parameter(Mandatory)]
     [string]$customRdpPort
