@@ -1,7 +1,9 @@
 Configuration ASHCIHost {
 
     param(
-    [String]$targetDrive = "V"
+    [String]$targetDrive = "V",
+    [Parameter(Mandatory)]
+    [string]$customRdpPort
     )
     
     Import-DscResource -ModuleName 'PSDesiredStateConfiguration'
