@@ -1,8 +1,8 @@
-Configuration Hypervisor {
+Configuration ASHCIHost001 {
 
     Import-DscResource -ModuleName 'PSDesiredStateConfiguration'
     
-    Node Hypervisor{
+    Node localhost{
     
     #Windows Features Installations
     WindowsFeature Hyper-V {
