@@ -247,7 +247,7 @@
             ]
         },
         "virtualMachineSize": {
-            "value": "Standard_D4s_v3"
+            "value": "Standard_D16s_v3"
         },
         "adminUsername": {
             "value": "AzureAdmin"
