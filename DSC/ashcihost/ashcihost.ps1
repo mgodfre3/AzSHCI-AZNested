@@ -24,7 +24,5 @@ Configuration ASHCIHost001 {
     
     }
     
-    Hypervisor 
-    
     
     
