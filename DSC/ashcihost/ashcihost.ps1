@@ -4,6 +4,10 @@ Configuration ASHCIHost {
     [Parameter(Mandatory)]
     [System.Management.Automation.PSCredential]$Admincreds,
     [String]$targetDrive = "V",
+    [String]$targetVMPath = "$targetDrive" + ":\VMs",
+    [String]$OSDrive = "C",
+    [String]$VMPath = "$OSDrive" + ":\AzHCIVHDs",
+    [String]$dsc_source="https://raw.githubusercontent.com/billcurtis/AzSHCISandbox/main/",
     [Parameter(Mandatory)]
     [string]$customRdpPort
     )
@@ -33,6 +37,23 @@ Configuration ASHCIHost {
     IncludeAllSubFeature = $true
     }
     
+    #Required Folders for ASHCI Deployment
+    File "VMfolder" {
+        Type            = 'Directory'
+        DestinationPath = "$targetVMPath"
+        DependsOn       = "[Script]FormatDisk"
+        SourcePath = "https://ashcinested.blob.core.windows.net/vhd/AzStackHCIPreview1.vhdx"
+        MatchSource="True"
+    }
+    File "ASHCIBuildScripts" {
+        Type            = 'Directory'
+        DestinationPath = "$VMPath"
+        DependsOn       = "[Script]FormatDisk"
+        SourcePath = "$dsc_source"
+        MatchSource="True"
+    }
+
+
 #Configuring Storage Pool
     Script StoragePool {
         SetScript  = {
@@ -78,11 +99,14 @@ Configuration ASHCIHost {
         DependsOn  = "[Script]VirtualDisk"
     }
     
+    
+
+
+
+
+
     }
     
-    
-    
-    }
-    
+}   
     
     
