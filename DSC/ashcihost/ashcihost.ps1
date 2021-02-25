@@ -5,7 +5,7 @@ Configuration ASHCIHost {
     [System.Management.Automation.PSCredential]$Admincreds,
     [String]$targetDrive = "V",
     [String]$targetVMPath = "$targetDrive" + ":\VMs",
-    [String]$dsc_source="https://raw.githubusercontent.com/billcurtis/AzSHCISandbox/main/",
+    [String]$dsc_source="https://github.com/mgodfre3/AzSHCISandbox/archive/main.zip",
     #[Parameter(Mandatory)]
     [string]$customRdpPort,
     [String]$ashci_uri="https://ashcinested.blob.core.windows.net/vhd/AzStackHCIPreview1.vhdx?sp=r&st=2021-02-25T02:10:02Z&se=2021-03-31T09:10:02Z&spr=https&sv=2020-02-10&sr=b&sig=HmkDCro8ezz1tdf7VO%2FMAq8yd8HwOv%2B%2BiaBvGlSOBoA%3D",
@@ -57,19 +57,32 @@ Configuration ASHCIHost {
         DestinationPath = "$env:SystemDrive\AzHCIVHDs"
         DependsOn       = "[Script]FormatDisk"
     }
+    
+    File "ASHCI_Sandbox" {
+        Type            = 'Directory'
+        DestinationPath = "$env:SystemDrive\AzHCI_Sandbox"
+        DependsOn       = "[Script]FormatDisk"
+        
+    }
 
     xRemoteFile "Server2019VHD"{
         uri=$server2019_uri
         DestinationPath="$env:SystemDrive\AzHCIVHDs\Server2019.vhdx"
         DependsOn="[File]ASHCIBuildScripts"
     }
-
+   
     xRemoteFile "ASHCIVHD"{
         uri=$ashci_uri
         DestinationPath="$env:SystemDrive\AzHCIVHDs\ASHCI.vhdx"
         DependsOn="[File]ASHCIBuildScripts"
     }
    
+   xRemoteFile "ASHCIBuildScripts"{
+    uri=$dsc_source
+    DestinationPath="$env:SystemDrive\AzHCI_Sandbox\ASHCI_Sandbox.zip"
+    DependsOn="[File]ASHCI_Sandbox"
+}
+
 
 
 
