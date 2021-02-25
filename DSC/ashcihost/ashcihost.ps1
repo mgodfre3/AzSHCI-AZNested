@@ -16,6 +16,7 @@ Configuration ASHCIHost {
     Import-DscResource -ModuleName 'PSDesiredStateConfiguration'
     Import-DscResource -ModuleName 'xPSDesiredStateConfiguration'
     Import-DscResource -ModuleName 'xCredSSP'
+    Import-DscResource -ModuleName 'DSCR_Shortcut'
 
     
     Node localhost{
@@ -93,6 +94,13 @@ Configuration ASHCIHost {
         uri=$wacURI
         DestinationPath="$env:SystemDrive\AzHCI_Sandbox\AzSHCISandbox-main\Applications\Windows Admin Center\WindowsAdminCenter2009.msi"
         DependsOn="[Archive]ASHCIBuildScripts"
+    }
+    cShortcut "BuildScript" {
+        Path="C:\Users\Public\Desktop\New-AzSHCISandbox.lnk"
+        Target="C:\AzHCI_Sandbox\AzSHCISandbox-main\New-AzSHCISandbox.ps1"
+        WorkingDirectory="C:\AzHCI_Sandbox\AzSHCISandbox-main"
+        Icon='shell32.dll,277'
+
     }
 
 
