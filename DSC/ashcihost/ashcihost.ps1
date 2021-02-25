@@ -113,7 +113,7 @@ Configuration ASHCIHost {
     }
 
     #### STAGE- SET WINDOWS DEFENDER EXCLUSION FOR VM STORAGE ####
-
+<#
     Script defenderExclusions {
         SetScript  = {
             $exclusionPath = "$Using:targetDrive" + ":\"
@@ -129,7 +129,7 @@ Configuration ASHCIHost {
         }
         DependsOn  = "[File]VMfolder"
     }
-
+#>
     #### STAGE 1c - REGISTRY & SCHEDULED TASK TWEAKS ####
 
     Registry "Disable Internet Explorer ESC for Admin" {
@@ -250,7 +250,7 @@ Configuration ASHCIHost {
     }
 
     #### STAGE 3a - CONFIGURE WinRM
-
+<#
     Script ConfigureWinRM {
         SetScript  = {
             Set-Item WSMan:\localhost\Client\TrustedHosts "*.$Using:DomainName" -Force
@@ -263,6 +263,7 @@ Configuration ASHCIHost {
         }
         DependsOn  = "[xCredSSP]Client"
     }
+#>
 }
     
     
