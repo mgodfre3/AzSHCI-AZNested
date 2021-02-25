@@ -1,19 +1,17 @@
 Configuration ASHCIHost {
 
     param(
-    [Parameter(Mandatory)]
-    [System.Management.Automation.PSCredential]$Admincreds,
+    #[Parameter(Mandatory)]
+    #[System.Management.Automation.PSCredential]$Admincreds,
     [String]$targetDrive = "V",
     [String]$targetVMPath = "$targetDrive" + ":\VMs",
-    [String]$OSDrive = "C",
-    [String]$ScriptPath = "$OSDrive" + ":\AzHCIVHDs",
     [String]$dsc_source="https://raw.githubusercontent.com/billcurtis/AzSHCISandbox/main/",
-    [Parameter(Mandatory)]
-    [string]$customRdpPort
+    [string]$customRdpPort="3389"
     )
     
     Import-DscResource -ModuleName 'PSDesiredStateConfiguration'
-    
+    Import-DscResource -ModuleName 'xPSDesiredStateConfiguration'
+
     
     Node localhost{
 
@@ -51,24 +49,17 @@ Configuration ASHCIHost {
 
     File "ASHCIBuildScripts" {
         Type            = 'Directory'
-        DestinationPath = "$ScriptPath"
+        DestinationPath = "$env:SystemDrive\AzHCIVHDs"
         DependsOn       = "[Script]FormatDisk"
     }
 
-    xRemoteFile "VHDs_Server2019" {
-        DestinationPath=$ScriptPath
-        URI="https://ashcinested.blob.core.windows.net/vhd/Server2019DC.vhdx?sp=r&st=2021-02-24T20:35:08Z&se=2021-04-01T03:35:08Z&spr=https&sv=2020-02-10&sr=b&sig=ULLmTD5VI0gcFtCApmiebQm%2Fm%2FgVSFR3eZZpn4tBBSI%3D"
+    xRemoteFile "ASHCI_VHD" {
+        DestinationPath ="$env:SystemDrive\AzHCIVHDs"
+        URI="https://ashcinested.blob.core.windows.net/vhd/AzStackHCIPreview1.vhdx?sp=r&st=2021-02-25T02:10:02Z&se=2021-03-31T09:10:02Z&spr=https&sv=2020-02-10&sr=b&sig=HmkDCro8ezz1tdf7VO%2FMAq8yd8HwOv%2B%2BiaBvGlSOBoA%3D"
+        DependsOn = "[File]ASHCIBuildScripts"
+
     }
 
-    xRemoteFile "VHDs_ASHCI" {
-        DestinationPath=$ScriptPath
-        URI="https://ashcinested.blob.core.windows.net/vhd/AzStackHCIPreview1.vhdx?sp=r&st=2021-02-24T20:50:45Z&se=2021-04-01T03:50:45Z&spr=https&sv=2020-02-10&sr=b&sig=ZKkxiEZtvnaPUCmzrov3corWnc6jeYZMPSU0pV4eeoo%3D"
-    }
-
-    xRemoteFile "BuildScripts" {
-        DestinationPath="$ScriptPath"
-        URI="$dsc_source"
-    }
 
 #Configuring Storage Pool
     Script StoragePool {
