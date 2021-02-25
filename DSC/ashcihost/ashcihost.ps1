@@ -86,10 +86,10 @@ Configuration ASHCIHost {
     Archive "ASHCIBuildScripts" {
         Path="$env:SystemDrive\AzHCI_Sandbox\ASHCI_Sandbox.zip"
         Destination="$env:SystemDrive\AzHCI_Sandbox"
-        DependsOn="[RemoteFile]ASHCI_Sandbox"
+        DependsOn="[xRemoteFile]ASHCI_Sandbox"
 
     }
-    
+
 
 
 
