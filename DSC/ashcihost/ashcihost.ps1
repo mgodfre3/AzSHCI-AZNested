@@ -8,8 +8,8 @@ Configuration ASHCIHost {
     [String]$dsc_source="https://github.com/mgodfre3/AzSHCISandbox/archive/main.zip",
     #[Parameter(Mandatory)]
     [string]$customRdpPort,
-    [String]$ashci_uri="https://ashcinested.blob.core.windows.net/vhd/AzStackHCIPreview1.vhdx?sp=r&st=2021-02-25T02:10:02Z&se=2021-03-31T09:10:02Z&spr=https&sv=2020-02-10&sr=b&sig=HmkDCro8ezz1tdf7VO%2FMAq8yd8HwOv%2B%2BiaBvGlSOBoA%3D",
-    [String]$server2019_uri="https://ashcinested.blob.core.windows.net/vhd/Server2019DC.vhdx?sp=r&st=2021-02-25T14:33:38Z&se=2021-02-25T22:33:38Z&spr=https&sv=2020-02-10&sr=b&sig=BCyTxv4FWr6Vzt6%2BhL4bkxu6UbfK1Bpj4q1AK%2FRy5MU%3D",
+    [String]$ashci_uri="https://aka.ms/AAbbhkn",
+    [String]$server2019_uri="https://aka.ms/AAbb9w1",
     [String]$wacUri = "https://aka.ms/wacdownload"
     )
     
