@@ -9,8 +9,8 @@ Configuration ASHCIHost {
     #[Parameter(Mandatory)]
     [string]$customRdpPort,
     [String]$ashci_uri="https://ashcinested.blob.core.windows.net/vhd/AzStackHCIPreview1.vhdx?sp=r&st=2021-02-25T02:10:02Z&se=2021-03-31T09:10:02Z&spr=https&sv=2020-02-10&sr=b&sig=HmkDCro8ezz1tdf7VO%2FMAq8yd8HwOv%2B%2BiaBvGlSOBoA%3D",
-    [String]$server2019_uri="https://ashcinested.blob.core.windows.net/vhd/Server2019DC.vhdx?sp=r&st=2021-02-25T14:33:38Z&se=2021-02-25T22:33:38Z&spr=https&sv=2020-02-10&sr=b&sig=BCyTxv4FWr6Vzt6%2BhL4bkxu6UbfK1Bpj4q1AK%2FRy5MU%3D"
-
+    [String]$server2019_uri="https://ashcinested.blob.core.windows.net/vhd/Server2019DC.vhdx?sp=r&st=2021-02-25T14:33:38Z&se=2021-02-25T22:33:38Z&spr=https&sv=2020-02-10&sr=b&sig=BCyTxv4FWr6Vzt6%2BhL4bkxu6UbfK1Bpj4q1AK%2FRy5MU%3D",
+    [String]$wacUri = "https://aka.ms/wacdownload"
     )
     
     Import-DscResource -ModuleName 'PSDesiredStateConfiguration'
@@ -88,6 +88,11 @@ Configuration ASHCIHost {
         Destination="$env:SystemDrive\AzHCI_Sandbox"
         DependsOn="[xRemoteFile]ASHCIBuildScripts"
 
+    }
+    xRemoteFile "WAC_Source"{
+        uri=$wacURI
+        DestinationPath="$env:SystemDrive\AzHCI_Sandbox\AzSHCISandbox-main\Applications\Windows Admin Center\WindowsAdminCenter2009.msi"
+        DependsOn="[Archive]ASHCIBuildScripts"
     }
 
 
@@ -300,7 +305,3 @@ Configuration ASHCIHost {
 
 
 }
-    
- 
-    
-    
