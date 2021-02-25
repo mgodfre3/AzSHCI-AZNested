@@ -1,8 +1,8 @@
 Configuration ASHCIHost {
 
     param(
-    #[Parameter(Mandatory)]
-    #[System.Management.Automation.PSCredential]$Admincreds,
+    [Parameter(Mandatory)]
+    [System.Management.Automation.PSCredential]$Admincreds,
     [String]$targetDrive = "V",
     [String]$targetVMPath = "$targetDrive" + ":\VMs",
     [String]$dsc_source="https://raw.githubusercontent.com/billcurtis/AzSHCISandbox/main/",
