@@ -239,7 +239,6 @@ Configuration ASHCIHost {
     xCredSSP Server {
         Ensure         = "Present"
         Role           = "Server"
-        DependsOn      = "[DnsConnectionSuffix]AddSpecificSuffixNATNic"
         SuppressReboot = $true
     }
     xCredSSP Client {
