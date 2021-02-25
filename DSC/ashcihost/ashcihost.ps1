@@ -62,9 +62,16 @@ Configuration ASHCIHost {
         uri=$server2019_uri
         DestinationPath="$env:SystemDrive\AzHCIVHDs\Server2019.vhdx"
         DependsOn="[File]ASHCIBuildScripts"
-
-
     }
+
+    xRemoteFile "ASHCIVHD"{
+        uri=$ashci_uri
+        DestinationPath="$env:SystemDrive\AzHCIVHDs\ASHCI.vhdx"
+        DependsOn="[File]ASHCIBuildScripts"
+    }
+   
+
+
 
 
 #Configuring Storage Pool
