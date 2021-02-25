@@ -210,11 +210,6 @@ Configuration ASHCIHost {
         }
     }
 
-    ScheduledTask "Disable Server Manager at Startup" {
-        TaskName = 'ServerManager'
-        Enable   = $false
-        TaskPath = '\Microsoft\Windows\Server Manager'
-    }
 
     #### STAGE 1d - CUSTOM FIREWALL BASED ON ARM TEMPLATE ####
 
