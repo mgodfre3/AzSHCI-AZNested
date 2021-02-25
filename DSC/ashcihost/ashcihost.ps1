@@ -7,7 +7,9 @@ Configuration ASHCIHost {
     [String]$targetVMPath = "$targetDrive" + ":\VMs",
     [String]$dsc_source="https://raw.githubusercontent.com/billcurtis/AzSHCISandbox/main/",
     [Parameter(Mandatory)]
-    [string]$customRdpPort
+    [string]$customRdpPort,
+    [String]$ashci_uri="https://ashcinested.blob.core.windows.net/vhd/AzStackHCIPreview1.vhdx?sp=r&st=2021-02-25T02:10:02Z&se=2021-03-31T09:10:02Z&spr=https&sv=2020-02-10&sr=b&sig=HmkDCro8ezz1tdf7VO%2FMAq8yd8HwOv%2B%2BiaBvGlSOBoA%3D"
+
     )
     
     Import-DscResource -ModuleName 'PSDesiredStateConfiguration'
@@ -54,12 +56,7 @@ Configuration ASHCIHost {
         DependsOn       = "[Script]FormatDisk"
     }
 
-    xRemoteFile "ASHCI_VHD" {
-        DestinationPath ="$env:SystemDrive\AzHCIVHDs"
-        URI="https://ashcinested.blob.core.windows.net/vhd/AzStackHCIPreview1.vhdx?sp=r&st=2021-02-25T02:10:02Z&se=2021-03-31T09:10:02Z&spr=https&sv=2020-02-10&sr=b&sig=HmkDCro8ezz1tdf7VO%2FMAq8yd8HwOv%2B%2BiaBvGlSOBoA%3D"
-        DependsOn = "[File]ASHCIBuildScripts"
-
-    }
+    
 
 
 #Configuring Storage Pool
