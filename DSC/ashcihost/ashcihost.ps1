@@ -6,7 +6,8 @@ Configuration ASHCIHost {
     [String]$targetDrive = "V",
     [String]$targetVMPath = "$targetDrive" + ":\VMs",
     [String]$dsc_source="https://raw.githubusercontent.com/billcurtis/AzSHCISandbox/main/",
-    [string]$customRdpPort="3389"
+    [Parameter(Mandatory)]
+    [string]$customRdpPort
     )
     
     Import-DscResource -ModuleName 'PSDesiredStateConfiguration'
