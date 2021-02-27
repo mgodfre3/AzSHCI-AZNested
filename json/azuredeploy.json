@@ -3,55 +3,264 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "location": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "EastUS"
         },
         "networkInterfaceName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "ashcihost001-Nic1"
         },
         "networkSecurityGroupName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "ASHCIHost001-nsg"
         },
         "networkSecurityGroupRules": {
-            "type": "array"
+            "type": "array",
+                "defaultvalue": [
+                {
+                    "name": "RDP",
+                    "properties": {
+                        "priority": 300,
+                        "protocol": "TCP",
+                        "access": "Allow",
+                        "direction": "Inbound",
+                        "sourceAddressPrefix": "*",
+                        "sourcePortRange": "*",
+                        "destinationAddressPrefix": "*",
+                        "destinationPortRange": "3389"
+                    }
+                }
+            ]
         },
         "subnetName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "default"
         },
         "virtualNetworkName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "ASHCIHost-Vnet"
         },
         "addressPrefixes": {
-            "type": "array"
+            "type": "array",
+            "defaultValue": "10.0.0.0/24"
         },
         "subnets": {
-            "type": "array"
+            "type": "array",
+            "defaultvalue": [
+                {
+                    "name": "default",
+                    "properties": {
+                        "addressPrefix": "10.0.0.0/24"
+                    }
+                }
+            ]
         },
+
         "publicIpAddressName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "ASHCIHost001-Publicip"
         },
         "publicIpAddressType": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Dynamic"
         },
         "publicIpAddressSku": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Basic"
         },
         "virtualMachineName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "ASHCIHost001"
         },
         "virtualMachineComputerName": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "ASHCIHost001"
         },
         "virtualMachineRG": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Standard_E16s_v4"
         },
         "osDiskType": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "Premium_LRS"
         },
         "dataDisks": {
-            "type": "array"
+            "type":"array",
+            "defaultvalue": [
+                {
+                    "lun": 0,
+                    "createOption": "attach",
+                    "caching": "ReadOnly",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "ASHCIHost001_DataDisk_0",
+                    "storageAccountType": null,
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": null
+                },
+                {
+                    "lun": 1,
+                    "createOption": "attach",
+                    "caching": "ReadOnly",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "ASHCIHost001_DataDisk_1",
+                    "storageAccountType": null,
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": null
+                },
+                {
+                    "lun": 2,
+                    "createOption": "attach",
+                    "caching": "ReadOnly",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "ASHCIHost001_DataDisk_2",
+                    "storageAccountType": null,
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": null
+                },
+                {
+                    "lun": 3,
+                    "createOption": "attach",
+                    "caching": "ReadOnly",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "ASHCIHost001_DataDisk_3",
+                    "storageAccountType": null,
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": null
+                },
+                {
+                    "lun": 4,
+                    "createOption": "attach",
+                    "caching": "ReadOnly",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "ASHCIHost001_DataDisk_4",
+                    "storageAccountType": null,
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": null
+                },
+                {
+                    "lun": 5,
+                    "createOption": "attach",
+                    "caching": "ReadOnly",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "ASHCIHost001_DataDisk_5",
+                    "storageAccountType": null,
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": null
+                },
+                {
+                    "lun": 6,
+                    "createOption": "attach",
+                    "caching": "ReadOnly",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "ASHCIHost001_DataDisk_6",
+                    "storageAccountType": null,
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": null
+                },
+                {
+                    "lun": 7,
+                    "createOption": "attach",
+                    "caching": "ReadOnly",
+                    "writeAcceleratorEnabled": false,
+                    "id": null,
+                    "name": "ASHCIHost001_DataDisk_7",
+                    "storageAccountType": null,
+                    "diskSizeGB": null,
+                    "diskEncryptionSet": null
+                }
+            ]
         },
         "dataDiskResources": {
-            "type": "array"
+            "type": "array",
+            "defaultvalue": [
+                {
+                    "name": "ASHCIHost001_DataDisk_0",
+                    "sku": "StandardSSD_LRS",
+                    "properties": {
+                        "diskSizeGB": 256,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                },
+                {
+                    "name": "ASHCIHost001_DataDisk_1",
+                    "sku": "StandardSSD_LRS",
+                    "properties": {
+                        "diskSizeGB": 256,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                },
+                {
+                    "name": "ASHCIHost001_DataDisk_2",
+                    "sku": "StandardSSD_LRS",
+                    "properties": {
+                        "diskSizeGB": 256,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                },
+                {
+                    "name": "ASHCIHost001_DataDisk_3",
+                    "sku": "StandardSSD_LRS",
+                    "properties": {
+                        "diskSizeGB": 256,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                },
+                {
+                    "name": "ASHCIHost001_DataDisk_4",
+                    "sku": "StandardSSD_LRS",
+                    "properties": {
+                        "diskSizeGB": 256,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                },
+                {
+                    "name": "ASHCIHost001_DataDisk_5",
+                    "sku": "StandardSSD_LRS",
+                    "properties": {
+                        "diskSizeGB": 256,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                },
+                {
+                    "name": "ASHCIHost001_DataDisk_6",
+                    "sku": "StandardSSD_LRS",
+                    "properties": {
+                        "diskSizeGB": 256,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                },
+                {
+                    "name": "ASHCIHost001_DataDisk_7",
+                    "sku": "StandardSSD_LRS",
+                    "properties": {
+                        "diskSizeGB": 256,
+                        "creationData": {
+                            "createOption": "empty"
+                        }
+                    }
+                }
+            ]
         },
         "virtualMachineSize": {
             "type": "string",
@@ -109,13 +318,15 @@
             ]
         },
         "adminUsername": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "AzureAdmin"
         },
         "adminPassword": {
             "type": "secureString"
         },
         "patchMode": {
-            "type": "string"
+            "type": "string",
+            "defaultValue": "AutomaticByOS"
         },
         "AutomationAccountName": {
             "type": "string",
