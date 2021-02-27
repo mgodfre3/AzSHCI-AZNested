@@ -64,9 +64,7 @@
         "virtualMachineComputerName": {
             "value": "ASHCIHost001"
         },
-        "virtualMachineRG": {
-            "value": "HCI-Testing"
-        },
+        
         "osDiskType": {
             "value": "Premium_LRS"
         },
