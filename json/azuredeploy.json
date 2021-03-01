@@ -331,7 +331,7 @@
             "name": "[parameters('networkSecurityGroupName')]",
             "type": "Microsoft.Network/networkSecurityGroups",
             "apiVersion": "2019-02-01",
-            "location": "[parameters('region')]",
+            "location": "[resourceGroup().location]",
             "properties": {
                 "securityRules": "[parameters('networkSecurityGroupRules')]"
             }
