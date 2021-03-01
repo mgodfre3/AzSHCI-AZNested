@@ -6,7 +6,19 @@
 ![](media/microsoft-azure-stack-HCI-logo.png)
 **Welcome to the easiest deployment of Azure Stack HCI, full stack of your life!** With this ARM Template you will be able to deploy a working, nested Azure Stack HCI cluster with Hyper-V, Storage Spaces Direct and Software Defined Networking, all manged by Windows Admin Center. It's so simple!
 
-You can use the "Deploy to Azure" button here, BUT you will NEED to supply your own Paramters file, which is located in this repository. You can simply load the file from the JSON folder, or copy/paste. Your choice.
+There are two main methods of deployment, GUI using the "Deploy to Azure" button here, or PowerShell. 
+
+Both methods will require you have a few things:
+
+-An Azure Subscription with Permissions to create a Resource Group and at least Contributor Permissions on that Resource Group
+
+-the AZ Powershell Module, simply run Install-Module -Name AZ in your Powershell session. (PowerShell only method)
+
+-Copy of the code, located in this repository.
+
+**Deploy to Azure Method**
+
+You will NEED to supply your own Parameters file, which is located in this repository. You can simply load the file from the JSON folder, or copy/paste. Your choice.
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmgodfre3%2FAzSHCI-AZNested%2Fmain%2Fjson%2Fazuredeploy.json)
 
@@ -21,13 +33,7 @@ You will need to supply the Resource Group and the Admin Password still, but thi
 Hit Review+Create and jump to the "After Deployment Section"
 
 
-This deployment will need to happen with PowerShell or Windows Terminal. This is an easy process, but it will require you have a few things.
 
--An Azure Subscription with Permissions to create a Resource Group and at least Contributor Permissions on that Resource Group
-
--the AZ Powershell Module, simply run Install-Module -Name AZ in your Powershell session.
-
--Copy of the code, located in this repository.
 
 
 **PowerShell Process**
@@ -75,6 +81,7 @@ Ok, are you ready to deploy this cluster, fair enough. This is challenging, so p
 
 
 
+**After Azure Deployment**
 
 **# Azure Stack HCI Sandbox (2/7/2021)**
 
