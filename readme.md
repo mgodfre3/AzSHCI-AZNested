@@ -6,10 +6,19 @@
 ![](media/microsoft-azure-stack-HCI-logo.png)
 **Welcome to the easiest deployment of Azure Stack HCI, full stack of your life!** With this ARM Template you will be able to deploy a working, nested Azure Stack HCI cluster with Hyper-V, Storage Spaces Direct and Software Defined Networking, all manged by Windows Admin Center. It's so simple!
 
-You can use the "Deploy to Azure" button here, BUT you will NEED to supply your own Paramters file, which is located in this repository. You can simply copy and paste the contents. See below for an example. 
+You can use the "Deploy to Azure" button here, BUT you will NEED to supply your own Paramters file, which is located in this repository. You can simply load the file from the JSON folder, or copy/paste. Your choice.
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmgodfre3%2FAzSHCI-AZNested%2Fmain%2Fjson%2Fazuredeploy.json)
 
+First step, you will want to click "Edit Parameters"
+![](media/Custom%20Param%20Files-part%201.jpg)
+
+Then you will want to load the Parameters File, remember the file is located in the JSON folder in the Repository.
+![](media/Custom%20Param%20Files-part%202.jpg)
+
+You will need to supply the Resource Group and the Admin Password still, but this is a fairly easy process.
+
+Hit Review+Create and jump to the "After Deployment Section"
 
 
 This deployment will need to happen with PowerShell or Windows Terminal. This is an easy process, but it will require you have a few things.
@@ -19,6 +28,11 @@ This deployment will need to happen with PowerShell or Windows Terminal. This is
 -the AZ Powershell Module, simply run Install-Module -Name AZ in your Powershell session.
 
 -Copy of the code, located in this repository.
+
+
+**PowerShell Process**
+
+If you are more familiar with PowerShell and would rather do the deployment in Command Line, well Awesome, that is how you should be doing this. The instructions are below:
 
 First, you will need to login to your Azure Account in your Terminal Session.
 
@@ -32,14 +46,14 @@ Following that, you will want to create a Resource Group Name Variable, somethin
 
 $rg=Get-AZResourceGroupName -Name "ASHCI-Deployment"
 
-then you need a password, strored as a variable, dont forget it, you will need it to login to the VM we create.
+then you need a password, stored as a variable, don't forget it, you will need it to login to the VM we create.
 
 $password=ConvertTo-SecureString -String "Password" -AsPlainText -Force
 
 Now store the template files as variables. Try something like
 
-$template=<path to azuredeploy.json>
-$paramTemplate=<path to azuredeploy.parameters.json>
+$template="path to azuredeploy.json"
+$paramTemplate="path to azuredeploy.parameters.json"
 
 Phew, we are ready to deploy. Ready, here we go.
 
@@ -62,10 +76,10 @@ Ok, are you ready to deploy this cluster, fair enough. This is challenging, so p
 
 
 
-# Azure Stack HCI Sandbox (2/7/2021)
+**# Azure Stack HCI Sandbox (2/7/2021)**
 
 
-![alt text](res/AzSHCISandbox.png "Graphic of a fully deployed SDN Sandbox")
+![Photo of Fully Deplopyed ASHCI-Sandbox](media/AzSHCISandbox.png)
 
 The Azure Stack HCI Sandbox is a series of scripts that creates a [HyperConverged](https://docs.microsoft.com/en-us/windows-server/hyperconverged/) environment using four nested Hyper-V Virtual Machines. The purpose of the SDN Sandbox is to provide operational training on Microsoft SDN as well as provide a development environment for DevOPs to assist in the creation and
 validation of SDN features without the time consuming process of setting up physical servers and network routers\switches.
@@ -118,7 +132,8 @@ You probably are not going to read the requirements listed below, so here are th
 
 10. Add the Hyper-Converged Cluster *AzStackCluster* to *Windows Admin Center* with *Network Controller*: [https://nc01.contosoc.com](https://nc01.contosoc.com) and you're off and ready to go!
 
-![alt text](res/AddHCCluster.png "Add Hyper-Converged Cluster Connection")
+![Add Hyper-Converged Cluster Connection](media/AddHCCluster.png)
+
 
 ## Configuration Overview
 
