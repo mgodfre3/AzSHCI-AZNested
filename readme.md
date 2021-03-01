@@ -3,10 +3,12 @@
 
 Welcome to the easiest deployment of Azure Stack HCI, full stack of your life! With this ARM Template you will be able to deploy a working, nested Azure Stack HCI cluster with Hyper-V, Storage Spaces Direct and Software Defined Networking, all manged by Windows Admin Center. It's so simple!
 
-<!--
+You can use the "Deploy to Azure" button here, BUT you will NEED to supply your own Paramters file, which is located in this repository. You can simply copy and paste the contents. See below for an example. 
+
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.//com%2Fmgodfre3%2FAzSHCI-AZNested%2Fmain%2Fjson%2Fazuredeploy.json
 )
---> 
+
+
 
 
 
