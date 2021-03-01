@@ -2,11 +2,7 @@
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "region":{
-            "type": "string",
-            "defaultValue":"EastUS2"
-        },
-                "networkInterfaceName": {
+            "networkInterfaceName": {
             "type": "string",
             "defaultValue": "ashcihost001-Nic1"
         },
@@ -305,7 +301,7 @@
             "name": "[parameters('networkInterfaceName')]",
             "type": "Microsoft.Network/networkInterfaces",
             "apiVersion": "2020-06-01",
-            "location": "[parameters('region')]",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
                 "[concat('Microsoft.Network/networkSecurityGroups/', parameters('networkSecurityGroupName'))]",
                 "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]",
@@ -344,7 +340,7 @@
             "name": "[parameters('virtualNetworkName')]",
             "type": "Microsoft.Network/virtualNetworks",
             "apiVersion": "2019-09-01",
-            "location": "[parameters('region')]",
+            "location": "[resourceGroup().location]",
             "properties": {
                 "addressSpace": {
                     "addressPrefixes": "[parameters('addressPrefixes')]"
@@ -356,7 +352,7 @@
             "name": "[parameters('publicIpAddressName')]",
             "type": "Microsoft.Network/publicIpAddresses",
             "apiVersion": "2019-02-01",
-            "location": "[parameters('region')]",
+            "location": "[resourceGroup().location]",
             "properties": {
                 "publicIpAllocationMethod": "[parameters('publicIpAddressType')]"
             },
@@ -368,7 +364,7 @@
             "name": "[parameters('dataDiskResources')[copyIndex()].name]",
             "type": "Microsoft.Compute/disks",
             "apiVersion": "2020-09-30",
-            "location": "[parameters('region')]",
+            "location": "[resourceGroup().location]",
             "properties": "[parameters('dataDiskResources')[copyIndex()].properties]",
             "sku": {
                 "name": "[parameters('dataDiskResources')[copyIndex()].sku]"
@@ -382,7 +378,7 @@
             "name": "[parameters('virtualMachineName')]",
             "type": "Microsoft.Compute/virtualMachines",
             "apiVersion": "2020-12-01",
-            "location": "[parameters('region')]",
+            "location": "[resourceGroup().location]",
             "dependsOn": [
                 "managedDiskResources",
                 "[concat('Microsoft.Network/networkInterfaces/', parameters('networkInterfaceName'))]"
@@ -453,7 +449,7 @@
                     "type": "extensions",
                     "name": "ConfigureAsHciHost",
                     "apiVersion": "2020-06-01",
-                    "location": "[resourceGroup().region]",
+                    "location": "[resourceGroup().location]",
                     "dependsOn": [
                         "[parameters('virtualMachineName')]" ],
                     "properties": {
@@ -490,7 +486,7 @@
             "name": "[concat('shutdown-computevm-', parameters('virtualMachineName'))]",
             "type": "Microsoft.DevTestLab/schedules",
             "apiVersion": "2018-09-15",
-            "location": "[resourceGroup().region]",
+            "location": "[resourceGroup().location]",
             "properties": {
                 "status": "[parameters('autoShutdownStatus')]",
                 "taskType": "ComputeVmShutdownTask",
