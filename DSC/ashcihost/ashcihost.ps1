@@ -9,7 +9,7 @@ Configuration ASHCIHost {
     #[Parameter(Mandatory)]
     [string]$customRdpPort,
     [String]$ashci_uri="https://aka.ms/AAbbhkn",
-    [String]$server2019_uri="https://aka.ms/AAbb9w1",
+    [String]$server2019_uri="https://aka.ms/AAbclsv",
     [String]$wacUri = "https://aka.ms/wacdownload"
     )
     
