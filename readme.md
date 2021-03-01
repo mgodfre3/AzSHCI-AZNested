@@ -36,42 +36,42 @@ If you are more familiar with PowerShell and would rather do the deployment in C
 
 First, you will need to login to your Azure Account in your Terminal Session.
 
-Login-AZAccount
+![](media/gin-AZAccount.jpg)
 
 Then you will need to select your Subscription
-
-Select-AZSubscription -Subscription "XXXXXXXX"
+![Select-AZSubscription -Subscription](media/Select%20Subscription.jpg)
 
 Following that, you will want to create a Resource Group Name Variable, something like:
 
-$rg=Get-AZResourceGroupName -Name "ASHCI-Deployment"
+![$rg=Get-AZResourceGroup -Name ](media/ResourceGroup.jpg)
 
 then you need a password, stored as a variable, don't forget it, you will need it to login to the VM we create.
 
-$password=ConvertTo-SecureString -String "Password" -AsPlainText -Force
+![](media/Password.jpg)
+
 
 Now store the template files as variables. Try something like
+![](media/Template2.jpg)
 
-$template="path to azuredeploy.json"
-$paramTemplate="path to azuredeploy.parameters.json"
+and
+![](media/Param_Template.jpg)
 
 Phew, we are ready to deploy. Ready, here we go.
 
-New-AzResourceGroupDeployment -Name ASHCINestedDeployment -ResourceGroupName $rg.resourcegroupname -TemplateFile $template -TemplateParameterFile $paramTemplate -AdminPassword $password 
+![](media/Deployment%20Command%20POSH.jpg)
 
 
-Give this a couple of minutes, and you will see your new VM, ASHCIHost001 if you kept the default name, in your Resource group. You can RDP to the Public IP address and then begin the deployment of the cluster, this first step was only to deploy the Host, the real fun begins next but dont worry it really is easy.
+Give this a couple of minutes, and you will see your new VM, ASHCIHost001 if you kept the default name, in your Resource group. You can RDP to the Public IP address and then begin the deployment of the cluster, this first step was only to deploy the Host, the real fun begins next but don't worry it really is easy.
 
 
-
-
-So, the deployment may error out, with a warning about the DSC extension not completing due to a system shutdown. Don;t worry though. Thats the beauty of DSC, the configuration will run every 15 minutes. Go grab a coffee or lunch, the compenents need a few minutes to download, but once you see the shortcut on the desktop, named New-AZSHCI-Sandbox, you are ready to go. 
-
+So, the deployment may error out, with a warning about the DSC extension not completing due to a system shutdown. Don't worry though. That's the beauty of DSC, the configuration will run every 15 minutes. 
 ![](media/Deploy_error_1.jpg)
 
-Ok, are you ready to deploy this cluster, fair enough. This is challenging, so pay attention. I want you to right click the shortcut on the desktop, and select "Run with PowerShell." Ok, go watch a movie, the next episode of Wanda-Vision/ Mandalorian. We need like 2 hours, and you should come back to 3 Virtual Machines, deployed on this host. Thats it, really. You now have a working Azure Stack HCI cluster, it has Hyper-V configured, a Failover Cluster, Storage Spaces Direct, Software Defined Networking and to manage it all, Windows Admin Center. Have fun, and read how to use this lab below:
+Go grab a coffee or lunch, the components need a few minutes to download, but once you see the shortcut on the desktop, named New-AZSHCI-Sandbox, you are ready to go. 
 
 
+
+Ok, are you ready to deploy this cluster, fair enough. This is challenging, so pay attention. I want you to right click the shortcut on the desktop, and select "Run with PowerShell." Ok, go watch a movie, the next episode of Wanda-Vision/ Mandalorian. We need like 2 hours, and you should come back to 3 Virtual Machines, deployed on this host. That's it, really. You now have a working Azure Stack HCI cluster, it has Hyper-V configured, a Fail over Cluster, Storage Spaces Direct, Software Defined Networking and to manage it all, Windows Admin Center. Have fun, and read how to use this lab below:
 
 
 
