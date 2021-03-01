@@ -1,7 +1,10 @@
 
 
 
-Welcome to the easiest deployment of Azure Stack HCI, full stack of your life! With this ARM Template you will be able to deploy a working, nested Azure Stack HCI cluster with Hyper-V, Storage Spaces Direct and Software Defined Networking, all manged by Windows Admin Center. It's so simple!
+
+
+![](media/microsoft-azure-stack-HCI-logo.png)
+**Welcome to the easiest deployment of Azure Stack HCI, full stack of your life!** With this ARM Template you will be able to deploy a working, nested Azure Stack HCI cluster with Hyper-V, Storage Spaces Direct and Software Defined Networking, all manged by Windows Admin Center. It's so simple!
 
 You can use the "Deploy to Azure" button here, BUT you will NEED to supply your own Paramters file, which is located in this repository. You can simply copy and paste the contents. See below for an example. 
 
@@ -52,6 +55,8 @@ Give this a couple of minutes, and you will see your new VM, ASHCIHost001 if you
 
 
 So, the deployment may error out, with a warning about the DSC extension not completing due to a system shutdown. Don;t worry though. Thats the beauty of DSC, the configuration will run every 15 minutes. Go grab a coffee or lunch, the compenents need a few minutes to download, but once you see the shortcut on the desktop, named New-AZSHCI-Sandbox, you are ready to go. 
+
+![](media/Deploy_error_1.jpg)
 
 Ok, are you ready to deploy this cluster, fair enough. This is challenging, so pay attention. I want you to right click the shortcut on the desktop, and select "Run with PowerShell." Ok, go watch a movie, the next episode of Wanda-Vision/ Mandalorian. We need like 2 hours, and you should come back to 3 Virtual Machines, deployed on this host. Thats it, really. You now have a working Azure Stack HCI cluster, it has Hyper-V configured, a Failover Cluster, Storage Spaces Direct, Software Defined Networking and to manage it all, Windows Admin Center. Have fun, and read how to use this lab below:
 
