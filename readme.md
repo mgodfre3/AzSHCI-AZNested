@@ -5,8 +5,8 @@ Welcome to the easiest deployment of Azure Stack HCI, full stack of your life! W
 
 You can use the "Deploy to Azure" button here, BUT you will NEED to supply your own Paramters file, which is located in this repository. You can simply copy and paste the contents. See below for an example. 
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.//com%2Fmgodfre3%2FAzSHCI-AZNested%2Fmain%2Fjson%2Fazuredeploy.json
-)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.//com%2Fmgodfre3%2FAzSHCI-AZNested%2Fmain%2Fjson%2Fazuredeploy.json)
+
 
 
 
