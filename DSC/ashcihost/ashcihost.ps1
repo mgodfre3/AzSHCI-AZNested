@@ -41,6 +41,12 @@ Configuration ASHCIHost {
     Name='Hyper-V-PowerShell'
     IncludeAllSubFeature = $true
     }
+
+    WindowsFeature Hyper-V-Manager{
+    Ensure = 'Present'
+    Name='Hyper-V-Tools'
+    IncludeAllSubFeature = $true
+    }
     
     #Required Folders for ASHCI Deployment
     
