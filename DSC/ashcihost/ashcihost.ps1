@@ -74,13 +74,13 @@ Configuration ASHCIHost {
 
     xRemoteFile "Server2019VHD"{
         uri=$server2019_uri
-        DestinationPath="$env:SystemDrive\AzHCIVHDs\Server2019.vhdx"
+        DestinationPath="$env:SystemDrive\AzHCIVHDs\GUI.vhdx"
         DependsOn="[File]ASHCIBuildScripts"
     }
    
     xRemoteFile "ASHCIVHD"{
         uri=$ashci_uri
-        DestinationPath="$env:SystemDrive\AzHCIVHDs\ASHCI.vhdx"
+        DestinationPath="$env:SystemDrive\AzHCIVHDs\AZSHCI.vhdx"
         DependsOn="[File]ASHCIBuildScripts"
     }
    
