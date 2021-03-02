@@ -62,7 +62,7 @@
         },
         "virtualMachineSize": {
             "type": "string",
-            "defaultValue": "Standard_D32ds_v4",
+            "defaultValue": "Standard_E32s_v3",
             "allowedValues": [
                 "Standard_D16s_v3",
                 "Standard_D32s_v3",
