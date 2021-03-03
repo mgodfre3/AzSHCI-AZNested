@@ -106,6 +106,7 @@ Configuration ASHCIHost {
         Target="C:\AzHCI_Sandbox\AzSHCISandbox-main\New-AzSHCISandbox.ps1"
         WorkingDirectory="C:\AzHCI_Sandbox\AzSHCISandbox-main"
         Icon='shell32.dll,277'
+        DependsOn="[xRemoteFile]ASHCIBuildScripts"
 
     }
 
